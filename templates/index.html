@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Inicio</title>
+</head>
+<body>
+    <div class="datos">
+        <h2>SEGUNDO PARCIAL TEM-742</h2>
+        <h3>Nombre: Weymar Jamil Condori Nacho</h3>
+        <h3>Carnet: 12907894 CBBA</h3>
+    </div>
+    <div class="tabla">
+        <h1>Listado de Productos</h1>
+    <a href="{{url_for('agregar')}}">Agregar Producto</a>
+    <br>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Fecha Vencimiento</th>
+            <th>Categoria</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+        {%for item in carrito %}
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.cantidad}}</td>
+            <td>{{item.precio}}</td>
+            <td>{{item.fecha_vencimiento}}</td>
+            <td>{{item.categoria}}</td>
+            <td><a href="{{url_for('editar',id=item.id)}}">Editar</a></td>
+            <td><a href="{{url_for('eliminar',id=item.id)}}">Eliminar</a></td>
+        </tr>
+        {% endfor%}
+    </table>
+    </div>
+</body>
+</html>
